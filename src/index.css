@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.link {
+  @apply text-white font-semibold  flex justify-center items-center gap-2 hover:bg-logotext hover:text-black  transition ease-in-out duration-500 rounded-lg p-2;
+}
+
+body{
+  @apply font-montserrat
+}
+.service {
+  @apply flex flex-col justify-center items-center p-2 rounded-md  text-white gap-5 hover:bg-main4 transition ease-in-out duration-500 ;
+}
+
+.service {
+  &&:hover {
+    .icon {
+      color: #eadd8e;
+    }
+   
+  }
+}
