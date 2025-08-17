@@ -64,7 +64,7 @@ const Home = () => {
     },
     {
       shipmentType: "Truck",
-      category: "Logistic Delevery",
+      category: "Logistic Delvery",
       description:
         "Rapid and recurring delivery of consumer essentials like food, beverages, and personal care items to retail outlets widthin a state.",
       image:
@@ -208,7 +208,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 ">
             <div className="service">
               <div className="flex flex-col justify-center items-center">
-                <p className="h-28 w-28 rounded-full bg-red-500 flex justify-center items-center text-white par">
+                <p className=" par">
                   <FaShip className="w-16 h-16 icon" />
                 </p>
                 <p className="text-lg font-semibold">Sea Freight</p>
@@ -223,10 +223,10 @@ const Home = () => {
             </div>
             <div className="service">
               <div className="flex flex-col justify-center items-center">
-                <p className="h-28 w-28 rounded-full bg-red-500 flex justify-center items-center text-white">
+                <p className="par">
                   <FaTruck className="w-16 h-16 icon" />
                 </p>
-                <p className="text-lg font-semibold par">Land transportation</p>
+                <p className="text-lg font-semibold ">Land transportation</p>
               </div>
 
               <p>
@@ -239,7 +239,7 @@ const Home = () => {
             </div>
             <div className="service">
               <div className="flex flex-col justify-center items-center">
-                <p className="h-28 w-28  rounded-full bg-red-500 flex justify-center items-center text-white par">
+                <p className=" par">
                   <FaSitemap className="w-16 h-16 icon" />
                 </p>
                 <p className="text-lg font-semibold">Merging</p>
@@ -261,6 +261,56 @@ const Home = () => {
             >
               Our Service
             </Link>
+          </div>
+        </div>
+
+        <div className="w-full section3 flex justify-center mt-28 flex-col lg:flex-row gap-12">
+          <div className="w-full lg:w-1/2 rounded-md h-[500px] lg:h-auto  bg-[url('https://res.cloudinary.com/de3iibogu/image/upload/v1754641839/2151998707_1_pjs0yl.jpg')] bg-center bg-cover"></div>
+          <div className="py-6 flex flex-col gap-20 text-white w-full lg:w-1/2">
+            <div className="w-full">
+              <p className="font-lato text-2xl font-bold  pb-6">
+                Why Cargomerger?
+              </p>
+              <p className="font-lato text-lg ">
+                At CargoMerge, we make connections happen. Our platform links
+                transporters with cargo owners and consolidation specialists,
+                ensuring every load finds the right partner. Whether you need to
+                move goods alone in a single shipment or combine your cargo with
+                others, CargoMerge brings the right people together—faster,
+                easier, and more efficiently. We don’t just move cargo—we move
+                opportunities.
+              </p>
+            </div>
+
+            <div className="w-full ">
+              <p className="font-lato text-2xl font-bold  pb-6">
+                Real-Time Updates on Transporter Availability
+              </p>
+              <p className="font-lato text-lg ">
+                Stay informed with real-time notifications whenever a
+                transporter becomes available. No more waiting in
+                uncertainty—get instant updates so you can book your shipment at
+                the perfect time. Our system connects you directly with trusted
+                transporters, ensuring you never miss an opportunity to move
+                your goods efficiently. Whether you’re shipping within the city
+                or across regions, you’ll have complete visibility into
+                availability, helping you plan ahead and save valuable time.
+              </p>
+            </div>
+            <div className="w-full ">
+              <p className="font-lato text-2xl font-bold  pb-6">
+                Track Your Goods, Anytime, Anywhere
+              </p>
+              <p className="font-lato text-lg ">
+                Stay in control with live shipment tracking right from your
+                dashboard. Watch your goods move in real time, from pickup to
+                delivery, with accurate location updates at every stage. Our
+                tracking system gives you full visibility and peace of mind,
+                ensuring you always know exactly where your shipment is and when
+                it will arrive. No guesswork—just complete transparency every
+                step of the way.
+              </p>
+            </div>
           </div>
         </div>
       </div>
