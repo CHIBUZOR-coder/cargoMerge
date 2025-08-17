@@ -10,7 +10,6 @@ import { RiAccountCircle2Fill, RiShipFill } from "react-icons/ri";
 import { MdMessage } from "react-icons/md";
 import { useEffect, useState } from "react";
 
-
 const Navbar = () => {
   // const [active, setActive] = useState(0);
 
@@ -35,20 +34,20 @@ const Navbar = () => {
     },
     {
       id: 4,
-      title: "  Register Cargo",
+      title: "Register Cargo",
       path: "/cargoReg",
       icon: <RiShipFill />,
     },
     {
       id: 5,
-      title: " Transporter",
+      title: "Transporter",
       path: "/transporterReg",
       icon: <RiShipFill />,
     },
     {
       id: 6,
-      title: "Account",
-      path: "/account",
+      title: "",
+      path: "/login",
       icon: <RiAccountCircle2Fill />,
     },
   ];
@@ -58,7 +57,6 @@ const Navbar = () => {
       <div className="p-4 bg-main sticky top-0 z-50  flex justify-between items-center">
         <div className="nav flex justify-between ">
           <Link
-         
             to={"/"}
             className="logo h-24 w-24 rounded-full bg-[url('/public/images/logo.png')] bg-center bg-cover object-cover"
           ></Link>
@@ -75,7 +73,7 @@ const Navbar = () => {
                 } font-semibold flex justify-center items-center gap-[5px] hover:bg-logotext hover:text-black transition ease-in-out duration-500 rounded-lg p-2`
               }
             >
-              <span>{item.title}</span>
+              <span>{item.title ? item.title : ""}</span>
               <span>{item.icon}</span>
             </NavLink>
           ))}

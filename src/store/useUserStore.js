@@ -6,6 +6,7 @@ const baseURL = "https://cargobackend-5fdz.onrender.com";
 import { useLoadingStore } from "./useLoadingStore";
 
 console.log("Base URL:", import.meta.env.VITE_BASE_URL);
+ const { setLoading } = useLoadingStore.getState();
 
 const useUserStore = create(
   persist(
@@ -25,7 +26,7 @@ const useUserStore = create(
       ) => {
         if (typeof MainImageSetter === "function") {
           console.log("newFiles:", newFiles);
-          
+
           MainImageSetter(newFiles);
         } else {
           console.error("MainImageSetter is not a function");
@@ -51,7 +52,7 @@ const useUserStore = create(
         confirmpassword,
         imageFile = null
       ) => {
-        const { setLoading } = useLoadingStore.getState();
+       
         setLoading("users", true);
         set({ userError: null, success: null });
 
@@ -94,6 +95,13 @@ const useUserStore = create(
             set({ user: null, success: null, userError: null });
           }, 4000);
         }
+      },
+
+      loginUser: async () => {
+        try {
+         setLoading("users", true);
+         
+        } catch (error) {}
       },
     }),
     {
