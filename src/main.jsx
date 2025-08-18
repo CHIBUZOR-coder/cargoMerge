@@ -1,18 +1,22 @@
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
+import { lazy } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
-import Services from "./pages/Services.jsx";
-import Login from "./pages/Login.jsx";
-import Contact from "./pages/Contact.jsx";
-import RegisterTransporter from "./pages/RegisterTransporter.jsx";
-import RegisterCargo from "./pages/RegisterCargo.jsx";
-import VerifyEmail from "./pages/VerifyEmail.jsx";
-import Loader from "./Custom/Loader.jsx";
+
+const Home = lazy(() => import("./pages/Home.jsx"));
+const About = lazy(() => import("./pages/About.jsx"));
+const Services = lazy(() => import("./pages/Services.jsx"));
+const Login = lazy(() => import("./pages/Login.jsx"));
+const Contact = lazy(() => import("./pages/Contact.jsx"));
+const RegisterTransporter = lazy(() =>
+  import("./pages/RegisterTransporter.jsx")
+);
+const RegisterCargo = lazy(() => import("./pages/RegisterCargo.jsx"));
+const VerifyEmail = lazy(() => import("./pages/VerifyEmail.jsx"));
+const Loader = lazy(() => import("./Custom/Loader.jsx"));
 
 const router = createBrowserRouter([
   {
