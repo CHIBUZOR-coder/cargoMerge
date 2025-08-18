@@ -12,6 +12,7 @@ import Contact from "./pages/Contact.jsx";
 import RegisterTransporter from "./pages/RegisterTransporter.jsx";
 import RegisterCargo from "./pages/RegisterCargo.jsx";
 import VerifyEmail from "./pages/VerifyEmail.jsx";
+import Loader from "./Custom/Loader.jsx";
 
 const router = createBrowserRouter([
   {
