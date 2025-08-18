@@ -69,7 +69,7 @@ const Login = () => {
             <div className="p-6 md:p-4 w-[80%] md:w-[70%] lg:w-[40%] bg-dry rounded-lg flexCol  border-2 border-logotext">
               <div className=" w-36 h-36 relative   login_logo flexRow mx-auto">
                 <img
-                  src="https://res.cloudinary.com/de3iibogu/image/upload/v1755355331/logo_pmixhe.png"
+                  src="https://res.cloudinary.com/de3iibogu/image/upload/v1755464837/logo-modified_ahi0l7.png"
                   alt="logo"
                   className=" absolute top-0 left-0 w-full h-full rounded-full object-cover"
                 />
