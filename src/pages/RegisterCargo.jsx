@@ -86,7 +86,7 @@ const RegisterCargo = () => {
         <div className="w-full relative  bg-main">
           <div className="min-h-[100vh] py-9 flexRow ">
             <div className="p-6 md:p-4 w-[80%] md:w-[70%] lg:w-[40%] bg-dry rounded-lg flexCol  border-2 border-logotext">
-              <div className=" w-36 h-36 relative bg-red-500  login_logo flexRow mx-auto">
+              <div className=" w-36 h-36 relative   login_logo flexRow mx-auto">
                 <img
                   src="https://res.cloudinary.com/de3iibogu/image/upload/v1755464837/logo-modified_ahi0l7.png"
                   alt="logo"
