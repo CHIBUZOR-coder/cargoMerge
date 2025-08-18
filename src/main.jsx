@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -56,6 +56,14 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center h-[100vh] bg-main">
+          <Loader />
+        </div>
+      }
+    >
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>
 );
