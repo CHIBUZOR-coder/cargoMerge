@@ -6,15 +6,17 @@ const baseURL = "https://cargobackend-5fdz.onrender.com";
 import { useLoadingStore } from "./useLoadingStore";
 
 console.log("Base URL:", import.meta.env.VITE_BASE_URL);
- const { setLoading } = useLoadingStore.getState();
+const { setLoading } = useLoadingStore.getState();
 
 const useUserStore = create(
   persist(
     (set) => ({
       user: null,
+      loggedUser: null,
       userError: null,
       success: null,
       allUsers: [],
+      navigatee: false,
 
       loadAction: false,
 
@@ -52,7 +54,6 @@ const useUserStore = create(
         confirmpassword,
         imageFile = null
       ) => {
-       
         setLoading("users", true);
         set({ userError: null, success: null });
 
@@ -97,16 +98,56 @@ const useUserStore = create(
         }
       },
 
-      loginUser: async () => {
+      loginUser: async (email, password) => {
+        setLoading("users", true);
+        const endpoint = `${baseURL}/login`;
         try {
-         setLoading("users", true);
-         
-        } catch (error) {}
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            console.log(data);
+            setLoading("users", false);
+            set({ userError: data?.message });
+          } else {
+            console.log(data);
+            setLoading("users", false);
+            set({
+              success: data?.message,
+              loggedUser: data?.userInfo,
+              navigatee: true,
+            });
+          }
+        } catch (error) {
+          console.log(error.message);
+        } finally {
+          setLoading("users", false);
+          setTimeout(() => {
+            set({
+              user: null,
+              success: null,
+              userError: null,
+              // loggedUser: null,
+            });
+          }, 4000);
+        }
       },
     }),
     {
       name: "user-store", // key in localStorage
-      partialize: (state) => ({ user: state.user, allUsers: state.allUsers }), // only persist `user`
+      partialize: (state) => ({
+        // user: state.user,
+        allUsers: state.allUsers,
+        loggedUser: state.loggedUser,
+      }), // only persist `user`
     }
   )
 );

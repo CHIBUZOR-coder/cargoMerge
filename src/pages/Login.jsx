@@ -6,11 +6,11 @@ import Uploader from "../Uploader/Uploader";
 import useUserStore from "../store/useUserStore";
 import Loader from "../Custom/Loader";
 import { useLoadingStore } from "../store/useLoadingStore";
+import { BiSolidLogInCircle } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 // No 5 Obollo Crescent Mile2 Lagos
 
 const Login = () => {
-  const [preview, setPreview] = useState(null);
-
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
@@ -21,17 +21,24 @@ const Login = () => {
     console.log("mainval", mainVal);
   };
 
-  const { userError, success } = useUserStore();
+  const navigate = useNavigate();
+
+  const { userError, success, loginUser, navigatee } = useUserStore();
   const loading = useLoadingStore((s) => s.loading.users);
 
-  const HandleRgisterUser = async () => {
-    await registerUser(Email, Password);
+  const HandleLogin = async () => {
+    await loginUser(Email, Password);
 
+    //  setTimeout(() => {
+    //    navigate("/");
+    //  }, 5000);
     // ✅ Clear all inputs
     setEmail("");
     setPassword("");
-    setPreview(null);
   };
+
+
+
   return (
     <Layout>
       {loading ? (
@@ -100,10 +107,11 @@ const Login = () => {
                 />
 
                 <span
-                  onClick={() => HandleRgisterUser()}
+                  onClick={() => HandleLogin()}
                   className="bg-logotext transi hover:bg-main flexRow gap-4 text-white p-4 rounded-lg w-full inline-block "
                 >
-                  <FaSign /> Register
+                  <BiSolidLogInCircle />
+                  <span>Login</span>
                 </span>
 
                 {/* <p className="text-center text-border">

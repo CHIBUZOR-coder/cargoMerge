@@ -73,8 +73,9 @@ const Navbar = () => {
                 } font-semibold flex justify-center items-center gap-[5px] hover:bg-logotext hover:text-black transition ease-in-out duration-500 rounded-lg p-2`
               }
             >
-              <span>{item.title ? item.title : ""}</span>
-              <span>{item.icon}</span>
+              {item.title && <span>{item.title}</span>}
+
+              <span className="flexRow">{item.icon}</span>
             </NavLink>
           ))}
         </div>
