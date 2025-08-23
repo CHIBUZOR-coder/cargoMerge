@@ -117,6 +117,16 @@ const useUserStore = create(
             console.log(data);
             setLoading("users", false);
             set({ userError: data?.message, navigatee: false });
+            setTimeout(() => {
+              set({
+                user: null,
+                success: null,
+                userError: null,
+                // loggedUser: null,
+              });
+
+              set({ navigatee: false });
+            }, 4000);
           } else {
             console.log(data);
             setLoading("users", false);
@@ -132,7 +142,6 @@ const useUserStore = create(
                 success: null,
                 userError: null,
                 // loggedUser: null,
-          
               });
 
               set({ navigatee: false });
