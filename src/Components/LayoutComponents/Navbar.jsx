@@ -47,7 +47,7 @@ const Navbar = () => {
     },
     {
       id: 6,
-      title: "",
+      title: "Account",
       path: "/login",
       icon: <RiAccountCircle2Fill />,
     },
