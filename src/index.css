@@ -30,7 +30,7 @@ body {
 }
 
 .flexCol {
-  @apply flex-col;
+  @apply flex flex-col justify-center items-center;
 }
 .flexRow {
   @apply flex justify-center items-center;
@@ -63,9 +63,52 @@ body {
 }
 
 @keyframes truckShake {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
 }
+
 .animate-truck {
   animation: truckShake 0.4s infinite ease-in-out;
+}
+
+@keyframes down {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 500px; /* enough height for menu */
+    opacity: 1;
+  }
+}
+
+.menu {
+  overflow: hidden;
+  animation: down 0.5s ease-in-out forwards;
+}
+
+@keyframes goup {
+  0% {
+    max-height: 500px; /* enough height for menu */
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+.menuDown {
+  overflow: hidden;
+  animation: down 0.5s ease-in-out forwards;
+}
+
+.menuUp {
+  overflow: hidden;
+  animation: goup 0.5s ease-in-out forwards;
 }
