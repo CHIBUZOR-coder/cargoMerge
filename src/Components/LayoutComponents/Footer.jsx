@@ -13,7 +13,7 @@ const Footer = () => {
   const title = "Check this out!";
   return (
     <div className="h-28 bg-main4">
-      <div className="flex gap-3">
+      <div className="flexRow p-6 gap-3">
         <FacebookMessengerShareButton url={shareUrl} quote={title}>
           <FacebookIcon size={40} round />
         </FacebookMessengerShareButton>
