@@ -87,10 +87,6 @@ body {
   }
 }
 
-.menu {
-  overflow: hidden;
-  animation: down 0.5s ease-in-out forwards;
-}
 
 @keyframes goup {
   0% {

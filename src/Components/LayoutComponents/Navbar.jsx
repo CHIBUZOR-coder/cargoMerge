@@ -8,7 +8,7 @@ import {
 import { TiContacts } from "react-icons/ti";
 import { RiAccountCircle2Fill, RiShipFill } from "react-icons/ri";
 import { IoMenu } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   // const [active, setActive] = useState(0);
@@ -53,6 +53,12 @@ const Navbar = () => {
     },
   ];
 
+
+  const hasMounted = useRef(false);
+
+  useEffect(() => {
+    hasMounted.current = true;
+  }, []);
   return (
     <div className="bg-main w-full">
       <div className="hidden lg:block">
@@ -105,7 +111,11 @@ const Navbar = () => {
 
       <div
         className={`${
-          isMenuOpen ? "menuDown" : "menuUp max-h-0 overflow-hidden"
+          isMenuOpen
+            ? "menuDown"
+            : hasMounted.current
+            ? "menuUp max-h-0 overflow-hidden"
+            : "max-h-0 overflow-hidden" /* no animation on initial load */
         } transition-all`}
       >
         <div className="p-4  flexCol ">
