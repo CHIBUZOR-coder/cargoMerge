@@ -123,21 +123,23 @@ const useUserStore = create(
             set({
               success: data?.message,
               loggedUser: data?.userInfo,
-              navigatee: true,
             });
+
+            setTimeout(() => {
+              set({
+                navigatee: true,
+                user: null,
+                success: null,
+                userError: null,
+                // loggedUser: null,
+          
+              });
+
+              set({ navigatee: false });
+            }, 4000);
           }
         } catch (error) {
           console.log(error.message);
-        } finally {
-          setLoading("users", false);
-          setTimeout(() => {
-            set({
-              user: null,
-              success: null,
-              userError: null,
-              // loggedUser: null,
-            });
-          }, 4000);
         }
       },
     }),

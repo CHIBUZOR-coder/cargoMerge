@@ -38,7 +38,6 @@ const Login = () => {
     console.log("Navigat:", navigatee);
 
     if (navigatee) {
-
       setTimeout(() => {
         navigate("/");
       }, 5000);
