@@ -143,9 +143,9 @@ const useUserStore = create(
                 userError: null,
                 // loggedUser: null,
               });
-
-              set({ navigatee: false });
             }, 4000);
+
+         
           }
         } catch (error) {
           console.log(error.message);

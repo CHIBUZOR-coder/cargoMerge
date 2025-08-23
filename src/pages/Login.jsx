@@ -15,6 +15,7 @@ const Login = () => {
   const [Password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [visibleII, setVisibleII] = useState(false);
+  const [move, setMove] = useState(false);
   const setInputVal = (vale, setter, mainVal, indicator) => {
     setter(vale);
     console.log(`${indicator}:`, mainVal);
@@ -34,15 +35,14 @@ const Login = () => {
     setPassword("");
   };
 
-  useEffect(() => {
-    console.log("Navigat:", navigatee);
+useEffect(() => {
+  if (navigatee) {
+    navigate("/");
+    // reset state if needed
+    useUserStore.setState({ navigatee: false });
+  }
+}, [navigatee, navigate]);
 
-    if (navigatee) {
-      setTimeout(() => {
-        navigate("/");
-      }, 5000);
-    }
-  }, [navigatee]);
 
   return (
     <Layout>
