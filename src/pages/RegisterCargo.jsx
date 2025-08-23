@@ -30,6 +30,9 @@ const RegisterCargo = () => {
   useEffect(() => {
     console.log("image:", userImage);
   }, [userImage]);
+  useEffect(() => {
+    console.log("success:", success);
+  }, [userImage]);
 
   const { HandleFileUploaded, registerUser, userError, success } =
     useUserStore();

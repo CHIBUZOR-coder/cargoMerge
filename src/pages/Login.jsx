@@ -29,15 +29,18 @@ const Login = () => {
   const HandleLogin = async () => {
     await loginUser(Email, Password);
 
-     setTimeout(() => {
-       navigate("/");
-     }, 5000);
     // ✅ Clear all inputs
     setEmail("");
     setPassword("");
   };
 
-
+  useEffect(() => {
+    if (navigatee) {
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    }
+  }, [navigatee]);
 
   return (
     <Layout>
