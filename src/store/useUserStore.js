@@ -116,7 +116,7 @@ const useUserStore = create(
           if (!res.ok) {
             console.log(data);
             setLoading("users", false);
-            set({ userError: data?.message });
+            set({ userError: data?.message, navigatee: false });
           } else {
             console.log(data);
             setLoading("users", false);
