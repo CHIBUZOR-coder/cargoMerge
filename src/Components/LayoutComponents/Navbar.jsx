@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   // const [active, setActive] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(null);
 
   const navLinks = [
     {
@@ -54,11 +54,8 @@ const Navbar = () => {
   ];
 
 
-  const hasMounted = useRef(false);
 
-  useEffect(() => {
-    hasMounted.current = true;
-  }, []);
+
   return (
     <div className="bg-main w-full">
       <div className="hidden lg:block">
@@ -111,11 +108,11 @@ const Navbar = () => {
 
       <div
         className={`${
-          isMenuOpen
+          isMenuOpen === null
+            ? "hidden" // no animation during initial load
+            : isMenuOpen
             ? "menuDown"
-            : hasMounted.current
-            ? "menuUp max-h-0 overflow-hidden"
-            : "max-h-0 overflow-hidden" /* no animation on initial load */
+            : "menuUp max-h-0 overflow-hidden"
         } transition-all`}
       >
         <div className="p-4  flexCol ">
