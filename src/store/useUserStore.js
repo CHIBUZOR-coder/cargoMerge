@@ -5,7 +5,6 @@ const baseURL = "https://cargobackend-5fdz.onrender.com";
 
 import { useLoadingStore } from "./useLoadingStore";
 
-
 console.log("Base URL:", import.meta.env.VITE_BASE_URL);
 const { setLoading } = useLoadingStore.getState();
 
@@ -164,6 +163,8 @@ const useUserStore = create(
         imageFile = null
       ) => {
         const endpoint = `${baseURL}/registerTransporters`;
+        setLoading("users", true);
+        set({ userError: null, success: null });
         const formData = new FormData();
         formData.append("name", name);
         formData.append("description", description);
@@ -181,21 +182,28 @@ const useUserStore = create(
         try {
           const res = await fetch(endpoint, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name,
-              description,
-              port_location,
-              vehicle_number,
-              email,
-              phone,
-              password,
-              confirmpassword,
-            }),
+           
+            body: formData,
           });
-        } catch (error) {}
+          const data = await res.json();
+          if (!res.ok) {
+            setLoading("users", false);
+            set({ userError: data.message || "Registration failed" });
+          } else {
+            setLoading("users", false);
+            set({
+              user: data?.user,
+              success: "Transporter registered successfully!",
+            });
+          }
+        } catch (error) {
+          console.log(error.message);
+          // set({ userError: error.message });
+           setLoading("users", false);
+          setTimeout(() => {
+            set({ user: null, success: null, userError: null });
+          }, 4000);
+        }
       },
     }),
     {
