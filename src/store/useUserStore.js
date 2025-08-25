@@ -5,6 +5,7 @@ const baseURL = "https://cargobackend-5fdz.onrender.com";
 
 import { useLoadingStore } from "./useLoadingStore";
 
+
 console.log("Base URL:", import.meta.env.VITE_BASE_URL);
 const { setLoading } = useLoadingStore.getState();
 
@@ -17,7 +18,8 @@ const useUserStore = create(
       success: null,
       allUsers: [],
       navigatee: false,
-
+      allTransporter: [],
+      loggedTransporter: null,
       loadAction: false,
 
       HandleFileUploaded: (
@@ -144,12 +146,56 @@ const useUserStore = create(
                 // loggedUser: null,
               });
             }, 4000);
-
-         
           }
         } catch (error) {
           console.log(error.message);
         }
+      },
+
+      registerTransporter: async (
+        name,
+        description,
+        email,
+        port_location,
+        phone,
+        vehicle_number,
+        password,
+        confirmpassword,
+        imageFile = null
+      ) => {
+        const endpoint = `${baseURL}/registerTransporters`;
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("port_location", port_location);
+        formData.append("vehicle_number", vehicle_number);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("password", password);
+        formData.append("confirmpassword", confirmpassword);
+        if (imageFile) {
+          console.log("image is present!");
+          formData.append("image", imageFile);
+        }
+
+        try {
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              description,
+              port_location,
+              vehicle_number,
+              email,
+              phone,
+              password,
+              confirmpassword,
+            }),
+          });
+        } catch (error) {}
       },
     }),
     {
@@ -157,7 +203,9 @@ const useUserStore = create(
       partialize: (state) => ({
         // user: state.user,
         allUsers: state.allUsers,
+        allTransporter: state.allTransporter,
         loggedUser: state.loggedUser,
+        loggedTransporter: state.loggedTransporter,
       }), // only persist `user`
     }
   )

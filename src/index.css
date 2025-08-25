@@ -108,3 +108,8 @@ body {
   overflow: hidden;
   animation: goup 0.5s ease-in-out forwards;
 }
+
+
+input[type="radio"] {
+  accent-color: rgba(8, 10, 26, 1); /* Change dot to red */
+}

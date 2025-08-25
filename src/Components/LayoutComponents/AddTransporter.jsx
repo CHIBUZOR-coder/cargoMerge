@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { Input } from "../Custom/input";
-import Layout from "../Layout/Layout";
+import { Input } from "../../Custom/input";
+import Layout from "../../Layout/Layout";
 import { FaSign } from "react-icons/fa";
-import Uploader from "../Uploader/Uploader";
-import useUserStore from "../store/useUserStore";
-import Loader from "../Custom/Loader";
-import { useLoadingStore } from "../store/useLoadingStore";
+import Uploader from "../../Uploader/Uploader";
+import useUserStore from "../../store/useUserStore";
+import Loader from "../../Custom/Loader";
+import { useLoadingStore } from "../../store/useLoadingStore";
 // No 5 Obollo Crescent Mile2 Lagos
 
-const RegisterCargo = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
+const AddTransporter = () => {
+  const [Name, setName] = useState("");
+  const [Location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [vehicleNumber, setVehicleNumber] = useState("");
+  const [licenseNumber, setLicenseNumber] = useState("");
   const [preview, setPreview] = useState(null);
+   const [Description, setDescription] = useState("");
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -21,6 +24,7 @@ const RegisterCargo = () => {
   const [visible, setVisible] = useState(false);
   const [visibleII, setVisibleII] = useState(false);
   const [userImage, setUserImage] = useState([]);
+
   const setInputVal = (vale, setter, mainVal, indicator) => {
     setter(vale);
     console.log(`${indicator}:`, mainVal);
@@ -38,7 +42,7 @@ const RegisterCargo = () => {
     useUserStore();
   const loading = useLoadingStore((s) => s.loading.users);
 
-  const HandleRgisterUser = async  () => {
+  const HandleRgisterUser = async () => {
     await registerUser(
       firstName,
       lastName,
@@ -99,32 +103,32 @@ const RegisterCargo = () => {
 
               <form className="flex flexCol gap-5 w-full ">
                 <Input
-                  label={"First Name"}
-                  placeholder={"John"}
+                  label={"Name"}
+                  placeholder={"Company Name or Individual Name"}
                   type={"text"}
-                  setter={setFirstName}
+                  setter={setName}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={firstName}
+                  mainVal={Name}
                   bg={true}
-                  indicator={"firstname"}
+                  indicator={"name"}
                 />
                 <Input
-                  label={"Last Name"}
-                  placeholder={"Deo"}
+                  label={"Location"}
+                  placeholder={"Port, Company or Individual Location"}
                   type={"text"}
-                  setter={setlastName}
+                  setter={setLocation}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={lastName}
+                  mainVal={Location}
                   bg={true}
-                  indicator={"lastname"}
+                  indicator={"location"}
                 />
                 <Input
                   label={"Email"}
@@ -141,19 +145,20 @@ const RegisterCargo = () => {
                   indicator={"password"}
                 />
                 <Input
-                  label={"Adress"}
-                  placeholder={"No 5 Obollo Crecsent kirikiri Mile2 Lagos"}
+                  label={"Vehicle Number"}
+                  placeholder={"ABC1234"}
                   type={"text"}
-                  setter={setAddress}
+                  setter={setVehicleNumber}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={address}
+                  mainVal={vehicleNumber}
                   bg={true}
-                  indicator={"address"}
+                  indicator={"vehicleNumber"}
                 />
+               
                 <Input
                   label={"Phone"}
                   placeholder={"09074639302"}
@@ -168,6 +173,8 @@ const RegisterCargo = () => {
                   bg={true}
                   indicator={"phone"}
                 />
+
+
 
                 <Input
                   label={"Password"}
@@ -249,4 +256,4 @@ const RegisterCargo = () => {
   );
 };
 
-export default RegisterCargo;
+export default AddTransporter;

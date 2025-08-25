@@ -8,12 +8,15 @@ import Loader from "../Custom/Loader";
 import { useLoadingStore } from "../store/useLoadingStore";
 // No 5 Obollo Crescent Mile2 Lagos
 
-const RegisterCargo = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
+const Transporter = () => {
+  const [Name, setName] = useState("");
+  const [Location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [vehicleNumber, setVehicleNumber] = useState("");
+  const [showVehicler, setShowVehicle] = useState(false);
   const [preview, setPreview] = useState(null);
+  const [Description, setDescription] = useState("");
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -21,6 +24,7 @@ const RegisterCargo = () => {
   const [visible, setVisible] = useState(false);
   const [visibleII, setVisibleII] = useState(false);
   const [userImage, setUserImage] = useState([]);
+
   const setInputVal = (vale, setter, mainVal, indicator) => {
     setter(vale);
     console.log(`${indicator}:`, mainVal);
@@ -34,28 +38,35 @@ const RegisterCargo = () => {
     console.log("success:", success);
   }, [userImage]);
 
-  const { HandleFileUploaded, registerUser, userError, success } =
-    useUserStore();
+  const {
+    HandleFileUploaded,
+    registerUser,
+    registerTransporter,
+    userError,
+    success,
+  } = useUserStore();
   const loading = useLoadingStore((s) => s.loading.users);
 
-  const HandleRgisterUser = async  () => {
-    await registerUser(
-      firstName,
-      lastName,
+  const HandleRgisterTransporter = async () => {
+    await registerTransporter(
+      Name,
+      Description,
       Email,
-      address,
+      Location,
       phone,
+      vehicleNumber,
       Password,
       ConfirmPassword,
       userImage
     );
 
     // ✅ Clear all inputs
-    setFirstName("");
-    setlastName("");
+    setName("");
+    setDescription("");
     setEmail("");
-    setAddress("");
+    setLocation("");
     setPhone("");
+    setVehicleNumber("");
     setPassword("");
     setConfirmPassword("");
     setUserImage([]);
@@ -99,32 +110,32 @@ const RegisterCargo = () => {
 
               <form className="flex flexCol gap-5 w-full ">
                 <Input
-                  label={"First Name"}
-                  placeholder={"John"}
+                  label={"Name"}
+                  placeholder={"Company Name or Individual Name"}
                   type={"text"}
-                  setter={setFirstName}
+                  setter={setName}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={firstName}
+                  mainVal={Name}
                   bg={true}
-                  indicator={"firstname"}
+                  indicator={"name"}
                 />
                 <Input
-                  label={"Last Name"}
-                  placeholder={"Deo"}
+                  label={"Location"}
+                  placeholder={"Port, Company or Individual Location"}
                   type={"text"}
-                  setter={setlastName}
+                  setter={setLocation}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={lastName}
+                  mainVal={Location}
                   bg={true}
-                  indicator={"lastname"}
+                  indicator={"location"}
                 />
                 <Input
                   label={"Email"}
@@ -140,20 +151,62 @@ const RegisterCargo = () => {
                   bg={true}
                   indicator={"password"}
                 />
-                <Input
-                  label={"Adress"}
-                  placeholder={"No 5 Obollo Crecsent kirikiri Mile2 Lagos"}
-                  type={"text"}
-                  setter={setAddress}
-                  setInputVal={setInputVal}
-                  setVisible={setVisible}
-                  setVisibleII={setVisibleII}
-                  visibleII={visibleII}
-                  visible={visible}
-                  mainVal={address}
-                  bg={true}
-                  indicator={"address"}
-                />
+
+                <div className="w-full flex gap-12 justify-center items-center">
+                  <div className="flex gap-4 items-center">
+                    <label
+                      className="text-logotext cursor-pointer"
+                      htmlFor="individual"
+                    >
+                      Individual
+                    </label>
+                    <input
+                      onClick={(e) => {
+                        setShowVehicle(true);
+                        // setVehicleNumber(e.target.value);
+                      }}
+                      type="radio"
+                      name="userType"
+                      id="individual"
+                      value="individual"
+                    />
+                  </div>
+                  <div className="flex gap-4 items-center">
+                    <label
+                      className="text-logotext cursor-pointer"
+                      htmlFor="company"
+                    >
+                      Company
+                    </label>
+                    <input
+                      onClick={(e) => {
+                        setShowVehicle(false);
+                        // setVehicleNumber(e.target.value);
+                      }}
+                      type="radio"
+                      name="userType"
+                      id="company"
+                      value="company"
+                    />
+                  </div>
+                </div>
+                <div className={` ${showVehicler ? "block" : "hidden"} w-full`}>
+                  <Input
+                    label={"Vehicle Number"}
+                    placeholder={"ABC1234"}
+                    type={"text"}
+                    setter={setVehicleNumber}
+                    setInputVal={setInputVal}
+                    setVisible={setVisible}
+                    setVisibleII={setVisibleII}
+                    visibleII={visibleII}
+                    visible={visible}
+                    mainVal={vehicleNumber}
+                    bg={true}
+                    indicator={"vehicleNumber"}
+                  />
+                </div>
+
                 <Input
                   label={"Phone"}
                   placeholder={"09074639302"}
@@ -168,6 +221,17 @@ const RegisterCargo = () => {
                   bg={true}
                   indicator={"phone"}
                 />
+
+                <div className="w-full ">
+                  <textarea
+                    name="description"
+                    id=""
+                    className="w-full h-32 bg-main border border-logotext rounded p-3 text-white outline-none resize-none focus:border-white transi"
+                    placeholder="Brief Description about your company or yourself"
+                    value={Description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  ></textarea>
+                </div>
 
                 <Input
                   label={"Password"}
@@ -226,7 +290,7 @@ const RegisterCargo = () => {
                 </div>
 
                 <span
-                  onClick={() => HandleRgisterUser()}
+                  onClick={() => HandleRgisterTransporter()}
                   className="bg-logotext transi hover:bg-main flexRow gap-4 text-white p-4 rounded-lg w-full inline-block "
                 >
                   <FaSign /> Register
@@ -249,4 +313,4 @@ const RegisterCargo = () => {
   );
 };
 
-export default RegisterCargo;
+export default Transporter;

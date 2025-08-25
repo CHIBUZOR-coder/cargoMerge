@@ -9,11 +9,14 @@ import { useLoadingStore } from "../store/useLoadingStore";
 // No 5 Obollo Crescent Mile2 Lagos
 
 const RegisterTransporter = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
+  const [Name, setName] = useState("");
+  const [Location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [vehicleNumber, setVehicleNumber] = useState("");
+  const [licenseNumber, setLicenseNumber] = useState("");
   const [preview, setPreview] = useState(null);
+   const [Description, setDescription] = useState("");
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -21,6 +24,7 @@ const RegisterTransporter = () => {
   const [visible, setVisible] = useState(false);
   const [visibleII, setVisibleII] = useState(false);
   const [userImage, setUserImage] = useState([]);
+
   const setInputVal = (vale, setter, mainVal, indicator) => {
     setter(vale);
     console.log(`${indicator}:`, mainVal);
@@ -99,32 +103,32 @@ const RegisterTransporter = () => {
 
               <form className="flex flexCol gap-5 w-full ">
                 <Input
-                  label={"First Name"}
-                  placeholder={"John"}
+                  label={"Name"}
+                  placeholder={"Company Name or Individual Name"}
                   type={"text"}
-                  setter={setFirstName}
+                  setter={setName}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={firstName}
+                  mainVal={Name}
                   bg={true}
-                  indicator={"firstname"}
+                  indicator={"name"}
                 />
                 <Input
-                  label={"Last Name"}
-                  placeholder={"Deo"}
+                  label={"Location"}
+                  placeholder={"Port, Company or Individual Location"}
                   type={"text"}
-                  setter={setlastName}
+                  setter={setLocation}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={lastName}
+                  mainVal={Location}
                   bg={true}
-                  indicator={"lastname"}
+                  indicator={"location"}
                 />
                 <Input
                   label={"Email"}
@@ -141,19 +145,20 @@ const RegisterTransporter = () => {
                   indicator={"password"}
                 />
                 <Input
-                  label={"Adress"}
-                  placeholder={"No 5 Obollo Crecsent kirikiri Mile2 Lagos"}
+                  label={"Vehicle Number"}
+                  placeholder={"ABC1234"}
                   type={"text"}
-                  setter={setAddress}
+                  setter={setVehicleNumber}
                   setInputVal={setInputVal}
                   setVisible={setVisible}
                   setVisibleII={setVisibleII}
                   visibleII={visibleII}
                   visible={visible}
-                  mainVal={address}
+                  mainVal={vehicleNumber}
                   bg={true}
-                  indicator={"address"}
+                  indicator={"vehicleNumber"}
                 />
+               
                 <Input
                   label={"Phone"}
                   placeholder={"09074639302"}
@@ -168,6 +173,8 @@ const RegisterTransporter = () => {
                   bg={true}
                   indicator={"phone"}
                 />
+
+
 
                 <Input
                   label={"Password"}
@@ -198,7 +205,7 @@ const RegisterTransporter = () => {
                   indicator={"confirmpassword"}
                 />
 
-                <div className="">
+                <div className="w-full">
                   <Uploader
                     onFileUploaded={HandleFileUploaded}
                     prviewSetter={setPreview}

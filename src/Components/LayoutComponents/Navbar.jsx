@@ -42,7 +42,7 @@ const Navbar = () => {
     {
       id: 5,
       title: "Transporter",
-      path: "/transporterReg",
+      path: "/addtransporter",
       icon: <RiShipFill />,
     },
     {
